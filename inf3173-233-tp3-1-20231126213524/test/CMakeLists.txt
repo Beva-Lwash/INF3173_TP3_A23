@@ -1,0 +1,5 @@
+enable_testing()
+add_executable(test_interceptor test_interceptor.cpp testutils.cpp wrapper.c)
+target_link_libraries(test_interceptor PRIVATE core GTest::gtest)
+add_test(NAME test_interceptor COMMAND test_interceptor)
+set_tests_properties(test_interceptor PROPERTIES TIMEOUT 10)

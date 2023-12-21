@@ -48,6 +48,10 @@ TEST(Interceptor, Ipsum) {
     ASSERT_EQ(ret, 0) << "Code de retour" << std::endl
                       << "commande: " << cmd << std::endl;
 
+    auto fsize_src = std::filesystem::file_size(datafile);
+    auto fsize_dst = std::filesystem::file_size(infile);
+    ASSERT_EQ(fsize_src, fsize_dst) << "Erreur taille fichier";
+
     ASSERT_TRUE(are_files_identical(datafile, infile))
         << "input files error\n ref:" << datafile << "\n act:" << infile;
     ASSERT_TRUE(are_files_identical(logfile, outfile))
